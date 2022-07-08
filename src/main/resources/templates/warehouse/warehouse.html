@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <a href="/" class="btn btn-info">Main page</a>
+    <h1>Warehouse Page</h1>
+    <a href="/warehouse/add" class="btn btn-success">Warehouse qo'shish</a>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each=" warehouse, i : ${list}">
+            <td th:text="${i.index+1}"></td>
+            <td th:text="${warehouse.getName()}"></td>
+            <td>
+                <a class="btn btn-warning" th:href="${'/warehouse/edit/'+warehouse.getId()}">Edit</a>
+                <a class="btn btn-danger" th:href="${'/warehouse/delete/'+warehouse.getId()}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<br>
+<br>
+<a class="btn btn-danger" th:href="${'/'}">Back</a>
+</body>
+</html>

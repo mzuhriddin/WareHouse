@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-fluid">
+    <h1>User Add Page</h1>
+    <form method="post" th:action="@{/user/add}">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input name="firstName" type="text" class="form-control" id="firstName"
+                   placeholder="First Name">
+            <label for="lastName">Last Name</label>
+            <input name="lastName" type="text" class="form-control" id="lastName"
+                   placeholder="Last Name">
+            <label for="phoneNumber">Phone</label>
+            <input name="phoneNumber" type="text" class="form-control" id="phoneNumber"
+                   placeholder="Phone Number">
+            <label for="password">Password</label>
+            <input name="password" type="password" class="form-control" id="password"
+                   placeholder="Password">
+            <label> WareHouse </label>
+            <div>
+                <!--            <select name="warehousesId" multiple="multiple">-->
+                <!--                <option th:each="warehouse : ${warehouses}"-->
+                <!--                        th:text="${warehouse.name}"-->
+                <!--                        th:value="${warehouse.id}">-->
+                <!--            </select>-->
+
+                <input type="checkbox" name="warehousesId" multiple="multiple"
+                       th:each="warehouse : ${warehouses}"
+                       th:text="${warehouse.name}"
+                       th:value="${warehouse.id}">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <br>
+        <br>
+        <br>
+        <a class="btn btn-danger" th:href="${'/user'}">Back</a>
+    </form>
+</div>
+</body>
+</html>

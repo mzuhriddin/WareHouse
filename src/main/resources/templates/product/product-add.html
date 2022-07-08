@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<h1>Product Add Page</h1>
+<form method="post" action="/product/add">
+
+    <div class="form-group">
+        <label for="photo">Photo</label>
+        <input name="photo" type="file" class="form-control" id="photo" required accept=".png,.jpeg,.jpg,.ico"
+               placeholder="Product photo kirit">
+    </div>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input name="name" type="text" class="form-control" id="name"
+               placeholder="Product name kirit">
+    </div>
+    <div class="form-group">
+        <label>
+            <select name="categoryId" required class="form-control "
+                    style="background-color: #f1f1f1">
+                <option th:each="category: ${categoryList}"
+                        th:text="${category.name}" th:value="${category.id}"
+                ></option>
+            </select>
+        </label>
+    </div>
+    <div class="form-group">
+        <label>
+            <select name="measurementId" required class="form-control "
+                    style="background-color: #f1f1f1">
+                <option th:each="measurement: ${measurementList}"
+                        th:text="${measurement.name}" th:value="${measurement.id}"
+                ></option>
+            </select>
+        </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+</body>
+</html>

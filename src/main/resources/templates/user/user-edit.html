@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+<h1>User Edit Page</h1>
+<form method="post" th:action="@{/user/edit/{id}(id=${user.getId()})}" th:object="${user}">
+    <div class="form-group">
+        <label for="firstName">Name</label>
+        <input name="firstName" type="text" class="form-control" th:field="*{firstName}" id="firstName"
+               placeholder="Abdulvaliy">
+        <label for="lastName">Last Name</label>
+        <input name="lastName" type="text" class="form-control" th:field="*{lastName}" id="lastName"
+               placeholder="Bakhodirov">
+        <label for="phone">Phone</label>
+        <input name="phone" type="text" class="form-control" th:field="*{phoneNumber}" id="phone"
+               placeholder="+998971670555">
+        <label for="password">Password</label>
+        <input name="password" type="password" class="form-control"  id="password"
+               placeholder="Must contain minimum 8 charactersz">
+    </div>
+    <div>
+        <label> WareHouse </label>
+        <div>
+<!--            <select name="warehousesId" multiple="multiple">-->
+<!--                <option th:each="warehouse : ${warehouses}"-->
+<!--                        th:text="${warehouse.name}"-->
+<!--                        th:value="${warehouse.id}">-->
+<!--            </select>-->
+            <input type="checkbox" name="warehousesId" multiple="multiple"
+                   th:each="warehouse : ${warehouses}"
+                   th:text="${warehouse.name}"
+                   th:value="${warehouse.id}">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+<br>
+<br>
+<br>
+<a class="btn btn-danger" th:href="${'/user'}">Back</a>
+</body>
+</html>
